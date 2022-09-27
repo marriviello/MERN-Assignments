@@ -1,49 +1,32 @@
 // import './App.css';
-import Header from './components/Header';
-import Person from './components/Person';
-import Form from './components/Form';
+import AddPerson from './components/AddPerson';
+import Header from './components/Header'
+import Person from './components/Person'
+import {useState} from 'react'
 
 function App() {
+  const [people, setPeople] = useState([])
+
   return (
     <div className="App">
       <Header />
+      <AddPerson people={people} setPeople={setPeople}/> 
+
       {people.map((item, index) =>
       <Person
         key = {index}
+        index = {index}
         name = {item.name}
         height = {item.height}
         gender = {item.gender}
         money = {item.money}
         age = {item.age}
-      />
+        people = {people}
+        setPeople = {setPeople}
+      /> 
       )}
-      <Form />
     </div>
   );
 }
 
 export default App;
-
-let people =[
-  {
-    name: "Maria",
-    height: 5.8,
-    gender: "female",
-    money: 100,
-    age: 29,
-  },
-  {
-    name: "Harry",
-    height: 5.2,
-    gender: "male",
-    money: 44,
-    age: 29,
-  },
-  {
-    name: "Rachel",
-    height: 5.0,
-    gender: "female",
-    money: 109,
-    age: 49,
-  },
-]

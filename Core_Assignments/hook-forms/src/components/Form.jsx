@@ -2,6 +2,7 @@ import React, { useState } from  'react';
     
 const Form = () => {
     const [firstName, setFirstName] = useState("")
+    const [firstError, setFirstError] = useState("")
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -10,13 +11,21 @@ const Form = () => {
     const createUser = (e) => {
         // we must prevent the default refresh of the browser to keep our state from being reset
         e.preventDefault()
-        const newUser = { firstName, lastName, email, password, confirm }
+        const newUser = { firstName, lastName, email, password }
         console.log("Welcome", newUser)
         setFirstName("")
         setLastName("")
         setEmail("")
         setPassword("")
-        setConfirm("")
+    }
+
+    const checkFirst = (e) =>{
+        setFirstName(e.target.value);
+        if(e.target.value.length<2){
+            setFirstError("First name needs to be at least 2 characters.")
+        } else {
+            setFirstError("")
+        }
     }
     
     return(

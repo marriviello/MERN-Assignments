@@ -36,8 +36,6 @@ const Form = () => {
                 {
                     firstName && firstName.length < 3 ? <p className="text-danger">First name must be more than 3 characters!</p> : null
                 }
-
-
                 <label className="form-label">Last Name:</label>
                 <input type="text" onChange={(e)=>setLastName(e.target.value)} className="form-control"/>
                 <label className="form-label"> Age:</label>

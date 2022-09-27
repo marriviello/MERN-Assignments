@@ -1,0 +1,25 @@
+Node (npm)
+Express: framework for creating servers
+
+- package.json
+- server.js
+
+
+npm init
+npm i express (installs express)
+
+setting up server file:
+1. import express
+
+const express = require('express')
+const app = express()
+const PORT = 8000
+
+2. Run function for port and call-back function
+app.listen(PORT,()=>{
+    console.log(`Server is up and running on ${PORT}`)
+})
+
+// check by running node server.js
+
+Install nodemon: npm i -g nodemon

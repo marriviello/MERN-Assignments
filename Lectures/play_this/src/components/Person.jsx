@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 const Person = (props) => {
-    const {name, height, gender, money, age} = props
+    const {name, height, gender, money, age, index, people, setPeople} = props
     const [likes, setLikes] = useState(0)
     const [cardBackground, setCardBackground] = useState('')
 
@@ -17,6 +17,20 @@ const Person = (props) => {
         setCardBackground('')
     }
 
+    const updateMoney = (index, moreMoney) => {
+        const newPeople = [...people]
+        if(moreMoney){
+            newPeople[index].money++
+        }   else {
+            newPeople[index].money--
+        }
+        setPeople(newPeople)
+    }
+
+    const deletePerson = (personIndex) => {
+        setPeople(people.filter((person, index) => personIndex !== index))
+    }
+
     return (
         <div
         style={{backgroundColor: cardBackground}}
@@ -30,6 +44,9 @@ const Person = (props) => {
             <p>Age: {age}</p>
             <p>Likes: {likes}</p>
             <button onClick={likeMe}>I like {name}</button>
+            <button className='moMoney' onClick={e=>updateMoney(index, true)}>Give {name} money</button>
+            <button className='noMoney' onClick={e=>updateMoney(index, false)}>Take money from {name}</button>
+            <button className='bye' onClick={e=>deletePerson(index)}>Delete {name}</button>
         </div>
     )
 }
