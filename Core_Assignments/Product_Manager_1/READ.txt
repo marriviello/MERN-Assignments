@@ -1,0 +1,18 @@
+mkdir PROJECTNAME
+cd PROJECT NAME
+
+UNDER SERVER FOLDER: 
+
+mkdir server
+cd server 
+mkdir controllers, models, config, routes
+cd ..
+(in server) touch server.js
+
+nmp init -y
+npm install express mongoose
+npm install cors
+
+UNDER CLIENT FOLDER:
+npx create-react-app client
+npm install axios
