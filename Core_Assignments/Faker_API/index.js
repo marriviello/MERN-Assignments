@@ -1,23 +1,24 @@
 const express = require('express')
-const faker = require('@faker-js/faker')
+const {faker} = require('@faker-js/faker')
+const { response } = require('express')
 const app = express()
 const PORT=8000
 
 
 const userObj = () => ({
-    _id: faker.datatype.uuid(),
-    firstName: faker.name.firstName(),
-    lastName: faker.name.lastName(),
-    phoneNumber:faker.phone.phoneNumber(),
+    _id:faker.datatype.uuid(),
+    firstName:faker.name.firstName(),
+    lastName:faker.name.lastName(),
+    phoneNumber:faker.phone.number(),
     email:faker.internet.email(),
-    password: faker.internet.password()
+    password:faker.internet.password()
 })
 
 console.log(userObj());
 
 const companyObj = () => ({
     _id: faker.datatype.uuid(),
-    name: faker.company.companyName(),
+    name: faker.company.name(),
     address: {
         street: faker.address.streetAddress(),
         city: faker.address.cityName(),
@@ -26,6 +27,8 @@ const companyObj = () => ({
         country: faker.address.country(),
     },
 })
+
+console.log(companyObj())
 
 app.get("/api/users/new", (req,res)=>{
     const newUser = userObj();
