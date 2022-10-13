@@ -13,8 +13,11 @@ const createProduct = (req, res) => {
 }
 
 const getOneProduct = (req, res) => {
-    Product.findById(req.params.id)
-        .then((results) => res.json(results))
+    console.log(req.params)
+    Product.findById(req.params._id)
+        .then((results) => {
+            console.log(results)
+            res.json(results)})
         .catch((err)=>console.log(err))
 }
 
