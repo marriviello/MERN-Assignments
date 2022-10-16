@@ -21,9 +21,23 @@ const getOneProduct = (req, res) => {
         .catch((err)=>console.log(err))
 }
 
+const updateProduct = (req, res) => {
+    Product.updateOne({_id:req.params._id}, req.body)
+        .then((result) => res.json(result))
+        .catch((err)=>console.log(err))
+}
+
+const deleteProduct = (req, res) => {
+    Product.remove({_id: req.params._id})
+        .then((result) => res.json(result))
+        .catch((err)=>console.log(err))
+}
+
 module.exports = {
     getProducts,
     createProduct,
-    getOneProduct
+    getOneProduct,
+    updateProduct,
+    deleteProduct
 }
 
