@@ -18,4 +18,4 @@ npx create-react-app client
 npm install axios
 npm install react-router-dom
 
-In SRC make 'components' folder
+In SRC make 'components' folder and 'views' folder 

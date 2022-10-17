@@ -7,6 +7,7 @@ const UpdateProduct = (props) => {
     const [title, setTitle] = useState()
     const [price, setPrice] = useState()
     const [description, setDescription] = useState()
+    const [errors, setErrors] = useState("")
 
     const navigate = useNavigate();
 
@@ -28,7 +29,10 @@ const UpdateProduct = (props) => {
         }).then(res => {
                 console.log(res)
                 navigate("/")
-        }).catch(err => console.log(err))
+        }).catch(err => {
+            console.log(err)
+            setErrors(err.response.data.errors)
+        })
     }
     
     return (
@@ -41,6 +45,7 @@ const UpdateProduct = (props) => {
                     name="title" 
                     value={title} 
                     onChange={(e) => { setTitle(e.target.value) }} />
+                    { errors.title ? <span style={{color: "red"}}>{errors.title.message}</span>: null}
                 </p>
                 <p>
                     <label>Price</label><br />
@@ -48,6 +53,7 @@ const UpdateProduct = (props) => {
                     name="price"
                     value={price} 
                     onChange={(e) => { setPrice(e.target.value) }} />
+                    { errors.price ? <span style={{color: "red"}}>{errors.price.message}</span>: null}
                 </p>
                 <p>
                     <label>Description</label><br />
@@ -55,6 +61,7 @@ const UpdateProduct = (props) => {
                     name="description"
                     value={description} 
                     onChange={(e) => { setDescription(e.target.value) }} />
+                    { errors.description ? <span style={{color: "red"}}>{errors.description.message}</span>: null}
                 </p>
                 <input type="submit" value="Update"/>
             </form>
