@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 
-//UPDATE PERSON TO NEW DB
-
 mongoose.connect("mongodb://localhost/MERN_exam", { 
     useNewUrlParser: true, 
     useUnifiedTopology: true,
